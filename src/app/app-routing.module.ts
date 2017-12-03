@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ClasseListComponent } from './classe/classe-list/classe-list.component';
-import { ProfesseurComponent } from './professeur/professeur.component';
-import { EtudiantComponent } from './etudiant/etudiant.component';
-import { MatiereComponent } from './matiere/matiere.component';
+import { SubjectListComponent } from './subject/subject-list/subject-list.component';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { StudentListComponent } from './student/student-list/student-list.component';
+import { TeacherListComponent } from './teacher/teacher-list/teacher-list.component';
+import { StudentDetailsComponent } from './student/student-details/student-details.component';
 
 const routes: Routes = [
   {
@@ -21,16 +23,24 @@ const routes: Routes = [
     component: ClasseListComponent
   },
   {
-    path: 'professeurs',
-    component: ProfesseurComponent
+    path: 'subjects',
+    component: SubjectListComponent
   },
   {
-    path: 'etudiants',
-    component: EtudiantComponent
+    path: 'users',
+    component: UserListComponent
   },
   {
-    path: 'matieres',
-    component: MatiereComponent
+    path: 'teachers',
+    component: TeacherListComponent
+  },
+  {
+    path: 'students',
+    component: StudentListComponent
+  },
+  {
+    path: 'students/details/:id',
+    component: StudentDetailsComponent
   }
 
 ];

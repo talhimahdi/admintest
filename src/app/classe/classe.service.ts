@@ -15,7 +15,7 @@ export class ClasseService {
   }
 
   getclasses(): Observable<Classe[]>{
-    //return this.classesCollection.valueChanges();
+    /*return this.classesCollection.valueChanges();*/
     return this.classesCollection.snapshotChanges().map( changes => {
       return changes.map( a => {
         const data = a.payload.doc.data() as Classe;
@@ -31,6 +31,7 @@ export class ClasseService {
 
   updateclasse(classe){
     this.classeDocument = this.afs.doc(`classes/${classe.id}`);
+    delete classe.id;
     this.classeDocument.update(classe);
   }
 

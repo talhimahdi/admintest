@@ -13,7 +13,7 @@
 
 }
 .calendar{
-    float: none; !important
+    float: none !important;
 }
 .icon-arrow-left:before {
     content: '\f104';

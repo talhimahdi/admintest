@@ -1,7 +1,6 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Classe } from '../classe';
 import { ClasseService } from '../classe.service';
-
 
 import { Observable } from 'rxjs/Observable';
 
@@ -11,24 +10,30 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./classe-list.component.css']
 })
 export class ClasseListComponent implements OnInit {
-  classes:Observable<Classe[]>;
+  section_name = 'Classes';
+
+  classes: Observable<Classe[]>;
   classe: Classe = {
     classeName: '',
     displayName: '',
-    section:'A'
+    section: 'A'
   };
 
   addSaveNtn = 'Add';
 
-  constructor( private classeService:ClasseService ) { }
+  constructor(private classeService: ClasseService) { }
 
   ngOnInit() {
-    this.classes = this.classeService.getclasses();    
+    this.classes = this.classeService.getclasses();
   }
 
   deleteClasse(classe) {
-    if( confirm('Are you sure?') ){
+    if (confirm('Are you sure?')) {
       this.classeService.deleteclasse(classe);
+      if (classe.id === this.classe.id) {
+        this.classeReset();
+      }
+
     }
   }
 
@@ -38,32 +43,27 @@ export class ClasseListComponent implements OnInit {
   }
 
   addUpdateClasse(classe) {
-    console.log(classe.id);
-    if( classe.classeName != '' && classe.section != '' ) {
-      if(classe.id != undefined) {
+    if (classe.classeName !== '' && classe.section !== '') {
+      if (classe.id !== undefined) {
         classe.displayName = classe.classeName + ' ' + classe.section;
         this.classeService.updateclasse(classe);
-        this.classeReset();
-      }
-      else{
+      } else {
         classe.displayName = classe.classeName + ' ' + classe.section;
         this.classeService.addclasse(classe);
-        this.classeReset();
       }
-
+      this.classeReset();
     }
-    
-    //console.log(classe);
+
+    // console.log(classe);
   }
 
   classeReset() {
-        
     this.classe = {
       classeName: '',
       displayName: '',
-      section:'A'
+      section: 'A'
     };
     this.addSaveNtn = 'Add';
-  };
+  }
 
 }

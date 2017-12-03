@@ -25,29 +25,23 @@
         <div class="col-md-3">
             <div class="card alert">
                 <div class="card-header pr">
-                    <h4>Add New Classe</h4>
+                    <h4>Add New Subject</h4>
                 </div>
-                <form (submit)="addUpdateClasse(classe)" (keydown.enter)="$event.preventDefault()">
+                <form (submit)="addUpdateSubject(subject)" (keydown.enter)="$event.preventDefault()">
                     <div class="basic-form m-t-20">
                         <div class="form-group">
-                            <label>Classe Name</label>
-                            <input type="text" [(ngModel)]="classe.classeName" name="classeName" class="form-control border-none input-flat bg-ash" placeholder="">
+                            <label>Subject Name</label>
+                            <input type="text" [(ngModel)]="subject.subjectName" name="subjectName" class="form-control border-none input-flat bg-ash" placeholder="">
                         </div>
                     </div>
-                    <div class="basic-form">
+                    <div class="basic-form m-t-20">
                         <div class="form-group">
-                            <label>Section</label>
-                            <select [(ngModel)]="classe.section" name="section" class="form-control bg-ash border-none">
-                                <option>A</option>
-                                <option>B</option>
-                                <option>C</option>
-                                <option>D</option>
-                                <option>E</option>
-                            </select>
+                            <label>Abbreviation</label>
+                            <input type="text" [(ngModel)]="subject.abbreviation" name="abbreviation" class="form-control border-none input-flat bg-ash" placeholder="">
                         </div>
-                    </div>
+                    </div>      
                     <button class="btn btn-default btn-lg m-b-10 bg-primary border-none m-r-5 sbmt-btn" type="submit"><i class="ti-save"> </i>{{addSaveNtn}}</button>
-                    <button (click)="classeReset()" class="btn btn-default btn-lg m-b-10 m-l-5 sbmt-btn" type="button">Reset</button>
+                    <button (click)="subjectReset()" class="btn btn-default btn-lg m-b-10 m-l-5 sbmt-btn" type="button">Reset</button>
                 </form>
          
             </div>
@@ -55,7 +49,7 @@
         <div class="col-lg-9">
             <div class="card alert">
                 <div class="card-header pr">
-                    <h4>All Classes </h4>
+                    <h4>All Subjects </h4>
                     <div class="search-action">
                         <div class="search-type dib">
                             <input class="form-control input-rounded" placeholder="search" type="text">
@@ -67,26 +61,22 @@
                         <table class="table student-data-table m-t-20">
                             <thead>
                                 <tr>
-                                    <th>Classe Name</th>
-                                    <th>Display Name</th>
-                                    <th>Section</th>
+                                    <th>Subject Name</th>
+                                    <th>Abbreviation</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let classe of classes | async" >
-                                    <td (dblclick)="editClasse(classe)">
-                                        {{classe.classeName}}
+                                <tr *ngFor="let subject of subjects | async" >
+                                    <td (dblclick)="editSubject(subject)">
+                                        {{subject.subjectName}}
                                     </td>
-                                    <td (dblclick)="editClasse(classe)">
-                                        {{classe.displayName}}
-                                    </td>
-                                    <td (dblclick)="editClasse(classe)">
-                                        {{classe.section}}
+                                    <td (dblclick)="editSubject(subject)">
+                                        {{subject.abbreviation}}
                                     </td>
                                     <td>
-                                        <span><a [routerLink]="" (click)="editClasse(classe)"><i class="ti-pencil-alt color-success"></i></a></span>
-                                        <span><a [routerLink]="" (click)="deleteClasse(classe)"><i class="ti-trash color-danger"></i> </a></span>
+                                        <span><a [routerLink]="" (click)="editSubject(subject)"><i class="ti-pencil-alt color-success"></i></a></span>
+                                        <span><a [routerLink]="" (click)="deleteSubject(subject)"><i class="ti-trash color-danger"></i> </a></span>
                                     </td>
                                 </tr>
                             </tbody>

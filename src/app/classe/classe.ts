@@ -1,4 +1,4 @@
-export interface Classe{
+export interface Classe {
     id?: string;
     classeName: string;
     displayName: string;
