@@ -41,4 +41,14 @@ export class TeacherService {
     this.teacherDocument.delete();
   }
 
+  getTeachersName() {
+    const teachersName = [];
+    this.teachersCollection.valueChanges().subscribe(v => {
+      v.forEach((element, index) => {
+        teachersName[index] = element.firstName + ' ' + element.lastName;
+      });
+    });
+    return teachersName;
+  }
+
 }

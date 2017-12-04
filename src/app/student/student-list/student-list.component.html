@@ -11,7 +11,7 @@
       <div class="page-header">
           <div class="page-title">
               <ol class="breadcrumb text-right">
-                  <li><a href="">Dashboard</a></li>
+                  <li><a [routerLink]="'/'">Dashboard</a></li>
                   <li class="active">{{section_name}}</li>
               </ol>
           </div>
@@ -66,7 +66,7 @@
                                     [dateFormat]="'YYYY-MM-DD'" 
                                     [autoClose]="true"
                                     [type]="'calendar'"
-                                    [inputStyle] ="{
+                                    [inputStyle] = "{
                                                     padding: '6px 12px',
                                                     transition: 'border-color ease-in-out .15s,box-shadow ease-in-out .15',
                                                     height: '42px',

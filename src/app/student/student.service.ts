@@ -101,4 +101,14 @@ export class StudentService {
     this.studentDocument.delete();
   }
 
+  getStudentsName() {
+    const studentsName = [];
+    this.studentsCollection.valueChanges().subscribe(v => {
+      v.forEach((element, index) => {
+        studentsName[index] = element.firstName + ' ' + element.lastName;
+      });
+    });
+    return studentsName;
+  }
+
 }

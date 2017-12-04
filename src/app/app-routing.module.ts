@@ -7,6 +7,7 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { TeacherListComponent } from './teacher/teacher-list/teacher-list.component';
 import { StudentDetailsComponent } from './student/student-details/student-details.component';
+import { ClasseSlotsListComponent } from './classe-slots/classe-slots-list/classe-slots-list.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'classes',
     component: ClasseListComponent
+  },
+  {
+    path: 'classes_slots',
+    component: ClasseSlotsListComponent
   },
   {
     path: 'subjects',

@@ -8,20 +8,20 @@
                 <li><a routerLink="/dashboard" [routerLinkActive]="['active']"><i class="ti-calendar"></i> Dashboard </a></li>
                 <li>
                     <a class="sidebar-sub-toggle">
-                        <i class="ti-home"></i> Classes 
-                        <span class="badge badge-primary">6</span> 
+                        <i class="ti-calendar"></i> Classes 
+                        <!-- <span class="badge badge-primary">6</span> -->
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
                     </a>
                     <ul style="display: none;">
                         <li><a routerLink="/classes"  [routerLinkActive]="['active']"> Manage Classes </a></li>
-                        <li><a routerLink="/classes"  [routerLinkActive]="['active']"> Classe Routine </a></li>
+                        <li><a routerLink="/classes_slots"  [routerLinkActive]="['active']"> Class Slots </a></li>
                     </ul>
                 </li>
-                <li><a routerLink="/classes"  [routerLinkActive]="['active']"><i class="ti-calendar"></i> Classes <span class="badge badge-primary">22</span> </a></li>
-                <li><a routerLink="/subjects" [routerLinkActive]="['active']"><i class="ti-email"></i> Subjects <span class="badge badge-primary">8</span> </a></li>
-                <li><a routerLink="/users"    [routerLinkActive]="['active']"><i class="ti-user"></i> Users <span class="badge badge-primary">56</span> </a></li>
-                <li><a routerLink="/teachers" [routerLinkActive]="['active']"><i class="ti-user"></i> Teachers <span class="badge badge-primary">15</span> </a></li>
-                <li><a routerLink="/students" [routerLinkActive]="['active']"><i class="ti-user"></i> Students <span class="badge badge-primary">86</span> </a></li>
+                <!-- <li><a routerLink="/classes"  [routerLinkActive]="['active']"><i class="ti-calendar"></i> Classes </a></li> -->
+                <li><a routerLink="/subjects" [routerLinkActive]="['active']"><i class="ti-email"></i> Subjects </a></li>
+                <li><a routerLink="/users"    [routerLinkActive]="['active']"><i class="ti-user"></i> Users </a></li>
+                <li><a routerLink="/teachers" [routerLinkActive]="['active']"><i class="ti-user"></i> Teachers </a></li>
+                <li><a routerLink="/students" [routerLinkActive]="['active']"><i class="ti-user"></i> Students </a></li>
             </ul>
         </div>
     </div>
@@ -39,7 +39,6 @@
     </div>
     <div class="pull-right p-r-15">
         <ul>
-            <li class="header-icon dib"><a href="#search"><i class="ti-search"></i></a></li>
             <li class="header-icon dib"><i class="ti-bell"></i>
                 <div class="drop-down">
                     <div class="dropdown-content-heading">

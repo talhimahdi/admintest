@@ -40,4 +40,14 @@ export class SubjectService {
     this.subjectDocument.delete();
   }
 
+  getsubjectsName() {
+    const subjectsName = [];
+    this.subjectsCollection.valueChanges().subscribe(v => {
+      v.forEach((element, index) => {
+        subjectsName[index] = element.subjectName;
+      });
+    });
+    return subjectsName;
+  }
+
 }

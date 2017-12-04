@@ -17,9 +17,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components Import
 import { AppComponent } from './app.component';
 import { ClasseListComponent } from './classe/classe-list/classe-list.component';
+import { ClasseSlotsListComponent } from './classe-slots/classe-slots-list/classe-slots-list.component';
 import { SubjectListComponent } from './subject/subject-list/subject-list.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
+import { StudentDetailsComponent } from './student/student-details/student-details.component';
 import { TeacherListComponent } from './teacher/teacher-list/teacher-list.component';
 
 import { HomeComponent } from './home/home.component';
@@ -31,7 +33,7 @@ import { SubjectService } from './subject/subject.service';
 import { UserService } from './user/user.service';
 import { StudentService } from './student/student.service';
 import { TeacherService } from './teacher/teacher.service';
-import { StudentDetailsComponent } from './student/student-details/student-details.component';
+import { ClasseSlotService } from './classe-slots/classe-slot.service';
 
 // # Services Import
 
@@ -39,6 +41,7 @@ import { StudentDetailsComponent } from './student/student-details/student-detai
   declarations: [
     AppComponent,
     ClasseListComponent,
+    ClasseSlotsListComponent,
     SubjectListComponent,
     UserListComponent,
     StudentListComponent,
@@ -58,6 +61,7 @@ import { StudentDetailsComponent } from './student/student-details/student-detai
   ],
   providers: [
     ClasseService,
+    ClasseSlotService,
     SubjectService,
     UserService,
     StudentService,
