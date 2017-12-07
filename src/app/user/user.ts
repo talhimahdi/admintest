@@ -2,6 +2,6 @@ export interface User {
     id?: string;
     displayName: string;
     email: string;
-    role: string;
-    uid: string;
+    photoURL?: string;
+    role?: string;
 }

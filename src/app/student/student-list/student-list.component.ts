@@ -1,6 +1,8 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Student } from '../student';
+import { Classe } from '../../classe/classe';
 import { StudentService } from '../student.service';
+import { ClasseService } from '../../classe/classe.service';
 
 import { Observable } from 'rxjs/Observable';
 import { DatePipe } from '@angular/common';
@@ -16,22 +18,31 @@ export class StudentListComponent implements OnInit {
   section_name = 'Students';
 
   students: Observable<Student[]>;
+
   student: Student = {
     firstName: '',
     lastName: '',
-    image: '',
     birthday: '',
-    email: '',
     address: '',
     gender: '',
+    classeId: '',
+    displayName: '',
+    email: ''
   };
 
+  classes: Observable<Classe[]>;
+
+  // =>
   addSaveNtn = 'Add';
 
-  constructor(private studentService: StudentService) { }
+  constructor(
+    private studentService: StudentService,
+    private classeService: ClasseService
+  ) { }
 
   ngOnInit() {
     this.students = this.studentService.getStudents();
+    this.classes = this.classeService.getclasses();
   }
 
   deleteStudent(student) {
@@ -46,6 +57,8 @@ export class StudentListComponent implements OnInit {
   editStudent(student) {
     this.student = student;
     this.addSaveNtn = 'Save';
+
+    console.log(student);
   }
 
   addUpdateStudent(student) {
@@ -61,18 +74,18 @@ export class StudentListComponent implements OnInit {
       }
       this.studentReset();
     }
-    // console.log();
   }
 
   studentReset() {
     this.student = {
       firstName: '',
       lastName: '',
-      image: '',
       birthday: '',
-      email: '',
       address: '',
       gender: '',
+      classeId: '',
+      displayName: '',
+      email: ''
     };
     this.addSaveNtn = 'Add';
   }

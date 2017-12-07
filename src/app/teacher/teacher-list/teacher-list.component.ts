@@ -1,8 +1,11 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Teacher } from '../teacher';
 import { TeacherService } from '../teacher.service';
 
 import { Observable } from 'rxjs/Observable';
+
+import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-teacher-list',
@@ -15,7 +18,12 @@ export class TeacherListComponent implements OnInit {
   teachers: Observable<Teacher[]>;
   teacher: Teacher = {
     firstName: '',
-    lastName: ''
+    lastName: '',
+    birthday: '',
+    address: '',
+    gender: '',
+    displayName: '',
+    email: ''
   };
 
   addSaveNtn = 'Add';
@@ -43,6 +51,9 @@ export class TeacherListComponent implements OnInit {
 
   addUpdateTeacher(teacher) {
     if (teacher.firstName !== '' && teacher.lastName !== '') {
+      if (teacher.birthday !== '') {
+        teacher.birthday = moment(teacher.birthday).format('YYYY-MM-DD');
+      }
       if (teacher.id !== undefined) {
         this.teacherService.updateTeacher(teacher);
       }else {
@@ -50,14 +61,17 @@ export class TeacherListComponent implements OnInit {
       }
       this.teacherReset();
     }
-
-    // console.log(classe);
   }
 
   teacherReset() {
     this.teacher = {
       firstName: '',
-      lastName: ''
+      lastName: '',
+      birthday: '',
+      address: '',
+      gender: '',
+      displayName: '',
+      email: ''
     };
     this.addSaveNtn = 'Add';
   }

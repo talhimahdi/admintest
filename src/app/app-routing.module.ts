@@ -5,9 +5,13 @@ import { ClasseListComponent } from './classe/classe-list/classe-list.component'
 import { SubjectListComponent } from './subject/subject-list/subject-list.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
-import { TeacherListComponent } from './teacher/teacher-list/teacher-list.component';
 import { StudentDetailsComponent } from './student/student-details/student-details.component';
+
+import { TeacherListComponent } from './teacher/teacher-list/teacher-list.component';
+import { TeacherDetailsComponent } from './teacher/teacher-details/teacher-details.component';
 import { ClasseSlotsListComponent } from './classe-slots/classe-slots-list/classe-slots-list.component';
+import { AssignementListComponent } from './assignement/assignement-list/assignement-list.component';
+import { NoteListComponent } from './note/note-list/note-list.component';
 
 const routes: Routes = [
   {
@@ -40,12 +44,24 @@ const routes: Routes = [
     component: TeacherListComponent
   },
   {
+    path: 'teachers/details/:id',
+    component: TeacherDetailsComponent
+  },
+  {
     path: 'students',
     component: StudentListComponent
   },
   {
     path: 'students/details/:id',
     component: StudentDetailsComponent
+  },
+  {
+    path: 'assignements',
+    component: AssignementListComponent
+  },
+  {
+    path: 'notes',
+    component: NoteListComponent
   }
 
 ];

@@ -22,7 +22,8 @@ export class ClasseSlotsListComponent implements OnInit {
   classeSlot: ClasseSlot = {
     classeName: '',
     color: '',
-    slotDate: '',
+    starttDate: '',
+    endDate: '',
     dayNumber: 0,
     subjectName: '',
     teacherName: '',
@@ -86,7 +87,8 @@ export class ClasseSlotsListComponent implements OnInit {
     this.classeSlot = {
       classeName: '',
       color: '',
-      slotDate: '',
+      starttDate: '',
+      endDate: '',
       dayNumber: 0,
       subjectName: '',
       teacherName: '',

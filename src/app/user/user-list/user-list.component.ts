@@ -16,8 +16,7 @@ export class UserListComponent implements OnInit {
   user: User = {
     displayName: '',
     email: '',
-    role: '',
-    uid: ''
+    role: ''
   };
 
   addSaveNtn = 'Add';
@@ -31,7 +30,7 @@ export class UserListComponent implements OnInit {
   deleteUser(user) {
     if (confirm('Are you sure?')) {
       this.userService.deleteuser(user);
-      if (user.id == this.user.id) {
+      if (user.id === this.user.id) {
         this.userReset();
       }
     }
@@ -43,11 +42,10 @@ export class UserListComponent implements OnInit {
   }
 
   addUpdateUser(user) {
-    if (user.displayName != '' && user.section != '') {
-      if (user.id != undefined) {
+    if (user.displayName !== '' && user.section !== '') {
+      if (user.id !== undefined) {
         this.userService.updateuser(user);
-      }
-      else {
+      } else {
         this.userService.adduser(user);
       }
       this.userReset();
@@ -58,10 +56,9 @@ export class UserListComponent implements OnInit {
     this.user = {
       displayName: '',
       email: '',
-      role: '',
-      uid: ''
+      role: ''
     };
     this.addSaveNtn = 'Add';
-  };
+  }
 
 }

@@ -6,17 +6,17 @@ import { User } from './user';
 @Injectable()
 export class UserService {
   usersCollection: AngularFirestoreCollection<User>;
-  userDocument:   AngularFirestoreDocument<User>;
+  userDocument: AngularFirestoreDocument<User>;
 
   constructor(private afs: AngularFirestore) {
-    this.usersCollection = this.afs.collection('users', ref=>{
-      return ref.orderBy('displayName','asc');
+    this.usersCollection = this.afs.collection('users', ref => {
+      return ref.orderBy('displayName', 'asc');
     });
   }
 
-  getusers(): Observable<User[]>{
-    return this.usersCollection.snapshotChanges().map( changes => {
-      return changes.map( a => {
+  getusers(): Observable<User[]> {
+    return this.usersCollection.snapshotChanges().map(changes => {
+      return changes.map(a => {
         const data = a.payload.doc.data() as User;
         data.id = a.payload.doc.id;
         return data;
@@ -24,7 +24,7 @@ export class UserService {
     });
   }
 
-  adduser(user){
+  adduser(user) {
     this.usersCollection.add(user)
       .then(_ => {
         this.userDocument = this.afs.doc(`users/${_.id}`);
@@ -33,13 +33,13 @@ export class UserService {
       });
   }
 
-  updateuser(user){
+  updateuser(user) {
     this.userDocument = this.afs.doc(`users/${user.id}`);
     delete user.id;
     this.userDocument.update(user);
   }
 
-  deleteuser(user){
+  deleteuser(user) {
     this.userDocument = this.afs.doc(`users/${user.id}`);
     this.userDocument.delete();
   }

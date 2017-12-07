@@ -59,6 +59,14 @@
                         </div>
                         <div class="basic-form m-t-20 col-md-3">
                             <div class="form-group">
+                                <label>Classe</label>
+                                <select [(ngModel)]="student.classeId" name="classeId" class="form-control bg-ash border-none" required>
+                                    <option *ngFor="let classe of classes | async" [value]="classe.id">{{classe.displayName}}</option>
+                                </select>
+                            </div>
+                        </div> 
+                        <div class="basic-form m-t-20 col-md-3">
+                            <div class="form-group">
                                 <label>Birthday</label>
                                 <owl-date-time [(ngModel)]="student.birthday" 
                                     name="birthday" 
@@ -116,6 +124,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table student-data-table m-t-20">
@@ -128,15 +137,15 @@
                                     <th>Gender</th>
                                     <th>Birthday</th>
                                     <th>Address</th>
+                                    <th>Classe</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let student of students | async" >
                                     <td (dblclick)="editStudent(student)">
-                                            
                                         <div class="round-img">
-                                            <a [routerLink]="['/students/details/', student.id]"><img [src]="student.image" onError="this.src='http://www.clker.com/cliparts/d/L/P/X/z/i/no-image-icon-md.png'" alt="" width="50" height="50"></a>
+                                            <a [routerLink]="['/students/details/', student.id]"><img [src]="student.photoURL" onError="this.src='http://www.clker.com/cliparts/d/L/P/X/z/i/no-image-icon-md.png'" alt="" width="50" height="50"></a>
                                         </div>
                                     </td>
                                     <td (dblclick)="editStudent(student)">
@@ -156,6 +165,10 @@
                                     </td>
                                     <td (dblclick)="editStudent(student)">
                                         {{student.address}}
+                                    </td>
+                                    <td (dblclick)="editStudent(student)">
+                                        {{student.classeId}}
+                                        <!-- <li *ngFor="let obj of classes | async">{{obj.displayName}}</li> -->
                                     </td>
                                     
                                     <td>

@@ -1,10 +1,11 @@
-export interface Student {
-    id?: string;
+import { User } from '../user/user';
+
+export interface Student extends User {
     firstName: string;
     lastName: string;
-    image: string;
     birthday: string;
-    email: string;
     address: string;
     gender: string;
+    classeId: string;
+    uid?: string;
 }

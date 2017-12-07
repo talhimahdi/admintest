@@ -23,6 +23,10 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { StudentDetailsComponent } from './student/student-details/student-details.component';
 import { TeacherListComponent } from './teacher/teacher-list/teacher-list.component';
+import { TeacherDetailsComponent } from './teacher/teacher-details/teacher-details.component';
+
+import { AssignementListComponent } from './assignement/assignement-list/assignement-list.component';
+import { NoteListComponent } from './note/note-list/note-list.component';
 
 import { HomeComponent } from './home/home.component';
 // # Components Import
@@ -34,6 +38,8 @@ import { UserService } from './user/user.service';
 import { StudentService } from './student/student.service';
 import { TeacherService } from './teacher/teacher.service';
 import { ClasseSlotService } from './classe-slots/classe-slot.service';
+import { AssignementService } from './assignement/assignement.service';
+import { NoteService } from './note/note.service';
 
 // # Services Import
 
@@ -45,9 +51,12 @@ import { ClasseSlotService } from './classe-slots/classe-slot.service';
     SubjectListComponent,
     UserListComponent,
     StudentListComponent,
+    StudentDetailsComponent,
     TeacherListComponent,
+    TeacherDetailsComponent,
     HomeComponent,
-    StudentDetailsComponent
+    AssignementListComponent,
+    NoteListComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +74,9 @@ import { ClasseSlotService } from './classe-slots/classe-slot.service';
     SubjectService,
     UserService,
     StudentService,
-    TeacherService
+    TeacherService,
+    AssignementService,
+    NoteService
   ],
   bootstrap: [AppComponent]
 })

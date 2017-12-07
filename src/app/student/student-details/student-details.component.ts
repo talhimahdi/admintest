@@ -11,15 +11,7 @@ import { StudentService } from '../student.service';
 })
 export class StudentDetailsComponent implements OnInit {
   studentID;
-  student: Student = {
-    firstName: '',
-    lastName: '',
-    image: '',
-    birthday: '',
-    email: '',
-    address: '',
-    gender: '',
-  };
+  student: Student;
 
   constructor(private studentService: StudentService, private route: ActivatedRoute) { }
 
@@ -29,11 +21,11 @@ export class StudentDetailsComponent implements OnInit {
     });
     if (this.studentID !== '') {
       // call getStudentByID
-      // this.student = this.studentService.getStudentByID(this.studentID);
-
-      this.studentService.getStudentByID(this.studentID).subscribe(Doc => {
-        this.student = Doc;
-      });
+      this.studentService.getStudentByID(this.studentID);
+      /*this.studentService.getStudentByID(this.studentID).subscribe(Doc => {
+        // this.student = Doc[1];
+        console.log(Doc);
+      });*/
     }
   }
 
