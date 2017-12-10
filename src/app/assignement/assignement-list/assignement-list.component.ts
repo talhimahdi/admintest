@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfirmationService } from 'primeng/primeng';
 
 import { Observable } from 'rxjs/Observable';
 import { Assignement } from '../assignement';
@@ -55,7 +56,8 @@ export class AssignementListComponent implements OnInit {
     private assignementService: AssignementService,
     private classeService: ClasseService,
     private subjectService: SubjectService,
-    private teacherService: TeacherService
+    private teacherService: TeacherService,
+    private confirmationService: ConfirmationService
   ) { }
 
   ngOnInit() {
@@ -86,12 +88,15 @@ export class AssignementListComponent implements OnInit {
   }
 
   deleteAssignement(assignement) {
-    if (confirm('Are you sure?')) {
-      this.assignementService.deleteAssignement(assignement);
-      if (assignement.id === this.assignement.id) {
-        this.assignementReset();
+    this.confirmationService.confirm({
+      message: 'Are you sure?',
+      accept: () => {
+        this.assignementService.deleteAssignement(assignement);
+        if (assignement.id === this.assignement.id) {
+          this.assignementReset();
+        }
       }
-    }
+    });
   }
 
   assignementReset() {

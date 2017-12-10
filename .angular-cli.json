@@ -30,7 +30,9 @@
         "assets/theme-assets/css/lib/unix.css",
         "assets/theme-assets/css/lib/bootstrap.min.css",
         "assets/theme-assets/css/style.css",
-        "../node_modules/ng-pick-datetime/assets/style/picker.min.css"
+        "../node_modules/ng-pick-datetime/assets/style/picker.min.css",
+        "../node_modules/primeng/resources/themes/omega/theme.css",
+        "../node_modules/primeng/resources/primeng.min.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

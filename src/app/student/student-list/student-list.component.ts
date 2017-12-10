@@ -5,6 +5,7 @@ import { StudentService } from '../student.service';
 import { ClasseService } from '../../classe/classe.service';
 
 import { Observable } from 'rxjs/Observable';
+import { ConfirmationService } from 'primeng/primeng';
 import { DatePipe } from '@angular/common';
 import * as moment from 'moment';
 
@@ -26,6 +27,7 @@ export class StudentListComponent implements OnInit {
     address: '',
     gender: '',
     classeId: '',
+    classeDisplayName: '',
     displayName: '',
     email: ''
   };
@@ -37,7 +39,8 @@ export class StudentListComponent implements OnInit {
 
   constructor(
     private studentService: StudentService,
-    private classeService: ClasseService
+    private classeService: ClasseService,
+    private confirmationService: ConfirmationService
   ) { }
 
   ngOnInit() {
@@ -46,19 +49,20 @@ export class StudentListComponent implements OnInit {
   }
 
   deleteStudent(student) {
-    if (confirm('Are you sure?')) {
-      this.studentService.deleteStudent(student);
-      if (student.id === this.student.id) {
-        this.studentReset();
+    this.confirmationService.confirm({
+      message: 'Are you sure?',
+      accept: () => {
+        this.studentService.deleteStudent(student);
+        if (student.id === this.student.id) {
+          this.studentReset();
+        }
       }
-    }
+    });
   }
 
   editStudent(student) {
     this.student = student;
     this.addSaveNtn = 'Save';
-
-    console.log(student);
   }
 
   addUpdateStudent(student) {
@@ -66,7 +70,6 @@ export class StudentListComponent implements OnInit {
       if (student.birthday !== '') {
         student.birthday = moment(student.birthday).format('YYYY-MM-DD');
       }
-
       if (student.id !== undefined) {
         this.studentService.updateStudent(student);
       } else {
@@ -84,6 +87,7 @@ export class StudentListComponent implements OnInit {
       address: '',
       gender: '',
       classeId: '',
+      classeDisplayName: '',
       displayName: '',
       email: ''
     };

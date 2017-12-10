@@ -1,3 +1,9 @@
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425" #cd>
+    <p-footer>
+        <button type="button" pButton icon="fa-close" label="No" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="fa-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+</p-confirmDialog>
 <div class="row">
     <div class="col-lg-8 p-r-0 title-margin-right">
         <div class="page-header">
@@ -58,7 +64,7 @@
                     <h4>All Classes </h4>
                     <div class="search-action">
                         <div class="search-type dib">
-                            <input class="form-control input-rounded" placeholder="search" type="text">
+                            <input [(ngModel)]="searchWord" (ngModelChange)="search($event)" class="form-control input-rounded" placeholder="search" type="text">
                         </div>
                     </div>
                 </div>

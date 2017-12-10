@@ -3,6 +3,7 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 
 import { Observable } from 'rxjs/Observable';
+import { ConfirmationService } from 'primeng/primeng';
 
 @Component({
   selector: 'app-user-list',
@@ -21,19 +22,22 @@ export class UserListComponent implements OnInit {
 
   addSaveNtn = 'Add';
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     this.users = this.userService.getusers();
   }
 
   deleteUser(user) {
-    if (confirm('Are you sure?')) {
-      this.userService.deleteuser(user);
-      if (user.id === this.user.id) {
-        this.userReset();
+    this.confirmationService.confirm({
+      message: 'Are you sure?',
+      accept: () => {
+        this.userService.deleteuser(user);
+        if (user.id === this.user.id) {
+          this.userReset();
+        }
       }
-    }
+    });
   }
 
   editUser(user) {

@@ -1,3 +1,9 @@
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425" #cd>
+    <p-footer>
+        <button type="button" pButton icon="fa-close" label="No" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="fa-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+</p-confirmDialog>
 <div class="row">
   <div class="col-lg-8 p-r-0 title-margin-right">
       <div class="page-header">
@@ -61,7 +67,7 @@
                             <div class="form-group">
                                 <label>Classe</label>
                                 <select [(ngModel)]="student.classeId" name="classeId" class="form-control bg-ash border-none" required>
-                                    <option *ngFor="let classe of classes | async" [value]="classe.id">{{classe.displayName}}</option>
+                                    <option *ngFor="let classe of classes | async" [value]="classe.id" >{{classe.displayName}}</option>
                                 </select>
                             </div>
                         </div> 
@@ -167,8 +173,7 @@
                                         {{student.address}}
                                     </td>
                                     <td (dblclick)="editStudent(student)">
-                                        {{student.classeId}}
-                                        <!-- <li *ngFor="let obj of classes | async">{{obj.displayName}}</li> -->
+                                        {{student.classeDisplayName}}
                                     </td>
                                     
                                     <td>

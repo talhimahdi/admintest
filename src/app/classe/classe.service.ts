@@ -3,6 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Classe } from './classe';
 
+import { _ } from 'underscore';
+
 @Injectable()
 export class ClasseService {
   classesCollection: AngularFirestoreCollection<Classe>;
@@ -48,6 +50,19 @@ export class ClasseService {
       });
     });
     return classesName;
+  }
+
+  searchClasses(search): Observable<Classe[]> {
+    this.classesCollection = this.afs.collection('classes', ref => ref.where('displayName', '==', search));
+
+    return this.classesCollection.snapshotChanges().map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Classe;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    });
+
   }
 
 }

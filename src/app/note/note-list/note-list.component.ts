@@ -48,8 +48,15 @@ export class NoteListComponent implements OnInit {
   };
 
   addSaveNtn = 'Add';
+  assignementsCount: Number = 0;
+  studentsCount: Number = 0;
 
   studentsList: Boolean = false;
+  loadingTeachers: Boolean = true;
+
+  teacherID: string;
+  subjectID: string;
+  classeID: string;
 
   constructor(
     private noteService: NoteService,
@@ -64,26 +71,51 @@ export class NoteListComponent implements OnInit {
     this.notes = this.noteService.getNotes();
 
     this.teachers = this.teacherService.getTeachers();
+    this.teachers.subscribe(result => {
+      if ( result.length > 0 ) {
+        this.loadingTeachers = false;
+      }
+    });
     // this.subjects = this.subjectService.getsubjects();
     // this.classes = this.classeService.getclasses();
   }
 
   getAssignementsByTeacherID(teacherID) {
-    this.assignementService.getAssignementsByTeacherID(teacherID);
-  }
-
-  getAssignementsList(teacherID) {
     if (teacherID !== '') {
       this.assignements = this.assignementService.getAssignementsByTeacherID(teacherID);
+      this.studentsList = false;
+      this.teacherID = teacherID;
+      this.assignements.subscribe(result => { this.assignementsCount = result.length; });
+    }
+  }
+
+  studentsListByClasse(classeID, subjectID) {
+    if (classeID !== '' && subjectID) {
+      this.students = this.studentService.getStudentsByClasseID(classeID);
+      this.studentsList = true;
+      this.subjectID = subjectID;
+      this.classeID = classeID;
+
+      this.students.subscribe(result => { this.studentsCount = result.length; });
+    }
+  }
+
+  hideStudentsList(teacherID) {
+    if (teacherID !== '') {
+      this.assignements = this.assignementService.getAssignementsByTeacherID(teacherID);
+      this.studentsList = false;
+
+      this.assignements.subscribe(result => { this.assignementsCount = result.length; });
       this.studentsList = false;
     }
   }
 
-  studentsListByClasse(classeID) {
-    if (classeID !== '') {
-      this.students = this.studentService.getStudentsByClasseID(classeID);
-      this.studentsList = true;
-    }
+  addNote(student) {
+    console.log('studentID: ' + student.id);
+    console.log('teacherID: ' + this.teacherID);
+    console.log('classeID: ' + this.classeID);
+    console.log('subjectID: ' + this.subjectID);
+
   }
 
 }

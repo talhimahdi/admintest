@@ -43,7 +43,6 @@
     $('.sidebar-toggle').on( 'click', function(e) {
       e.preventDefault();
       _this.togglesidebar();
-      console.log("it's work");
     });
 
     // hide sidebar when push content overlay

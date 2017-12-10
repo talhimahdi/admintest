@@ -2,7 +2,7 @@ export interface ClasseSlot {
     id?: string;
     classeName: string;
     color: string;
-    starttDate: string;
+    startDate: string;
     endDate: string;
     dayNumber: number;
     subjectName: string;

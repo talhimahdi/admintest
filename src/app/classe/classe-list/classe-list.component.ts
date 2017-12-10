@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { Classe } from '../classe';
 import { ClasseService } from '../classe.service';
 
 import { Observable } from 'rxjs/Observable';
+import { ConfirmationService } from 'primeng/primeng';
 
 @Component({
   selector: 'app-classe-list',
@@ -20,21 +21,24 @@ export class ClasseListComponent implements OnInit {
   };
 
   addSaveNtn = 'Add';
+  searchWord;
 
-  constructor(private classeService: ClasseService) { }
+  constructor(private classeService: ClasseService, private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     this.classes = this.classeService.getclasses();
   }
 
   deleteClasse(classe) {
-    if (confirm('Are you sure?')) {
-      this.classeService.deleteclasse(classe);
-      if (classe.id === this.classe.id) {
-        this.classeReset();
+    this.confirmationService.confirm({
+      message: 'Are you sure?',
+      accept: () => {
+        this.classeService.deleteclasse(classe);
+        if (classe.id === this.classe.id) {
+          this.classeReset();
+        }
       }
-
-    }
+    });
   }
 
   editClasse(classe) {
@@ -56,6 +60,13 @@ export class ClasseListComponent implements OnInit {
 
     // console.log(classe);
   }
+
+  search() {
+    if (this.searchWord !== '') {
+      this.classes = this.classeService.searchClasses(this.searchWord);
+    }
+  }
+
 
   classeReset() {
     this.classe = {

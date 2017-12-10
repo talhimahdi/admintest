@@ -3,6 +3,7 @@ import { Teacher } from '../teacher';
 import { TeacherService } from '../teacher.service';
 
 import { Observable } from 'rxjs/Observable';
+import { ConfirmationService } from 'primeng/primeng';
 
 import { DatePipe } from '@angular/common';
 import * as moment from 'moment';
@@ -28,20 +29,22 @@ export class TeacherListComponent implements OnInit {
 
   addSaveNtn = 'Add';
 
-  constructor(private teacherService: TeacherService) { }
+  constructor(private teacherService: TeacherService, private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     this.teachers = this.teacherService.getTeachers();
   }
 
   deleteTeacher(teacher) {
-    if (confirm('Are you sure?')) {
-      this.teacherService.deleteTeacher(teacher);
-      if (teacher.id === this.teacher.id) {
-        this.teacherReset();
+    this.confirmationService.confirm({
+      message: 'Are you sure?',
+      accept: () => {
+        this.teacherService.deleteTeacher(teacher);
+        if (teacher.id === this.teacher.id) {
+          this.teacherReset();
+        }
       }
-
-    }
+    });
   }
 
   editTeacher(teacher) {

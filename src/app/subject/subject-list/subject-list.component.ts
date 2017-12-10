@@ -2,8 +2,8 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { Subject } from '../subject';
 import { SubjectService } from '../subject.service';
 
-
 import { Observable } from 'rxjs/Observable';
+import { ConfirmationService } from 'primeng/primeng';
 
 @Component({
   selector: 'app-subject-list',
@@ -21,20 +21,22 @@ export class SubjectListComponent implements OnInit {
 
   addSaveNtn = 'Add';
 
-  constructor(private subjectService: SubjectService) { }
+  constructor(private subjectService: SubjectService, private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     this.subjects = this.subjectService.getsubjects();
   }
 
   deleteSubject(subject) {
-    if (confirm('Are you sure?')) {
-      this.subjectService.deletesubject(subject);
-      if (subject.id === this.subject.id) {
-        this.subjectReset();
+    this.confirmationService.confirm({
+      message: 'Are you sure?',
+      accept: () => {
+        this.subjectService.deletesubject(subject);
+        if (subject.id === this.subject.id) {
+          this.subjectReset();
+        }
       }
-
-    }
+    });
   }
 
   editSubject(subject) {

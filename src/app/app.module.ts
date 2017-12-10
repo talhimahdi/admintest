@@ -13,6 +13,8 @@ export const firebaseConfig = environment.firebaseConfig;
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+import { ConfirmDialogModule, ConfirmationService, SharedModule } from 'primeng/primeng';
+
 
 // Components Import
 import { AppComponent } from './app.component';
@@ -66,7 +68,9 @@ import { NoteService } from './note/note.service';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     DateTimePickerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ConfirmDialogModule,
+    SharedModule
   ],
   providers: [
     ClasseService,
@@ -76,7 +80,8 @@ import { NoteService } from './note/note.service';
     StudentService,
     TeacherService,
     AssignementService,
-    NoteService
+    NoteService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

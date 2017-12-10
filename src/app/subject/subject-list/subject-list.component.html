@@ -1,3 +1,10 @@
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425" #cd>
+    <p-footer>
+        <button type="button" pButton icon="fa-close" label="No" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="fa-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+</p-confirmDialog>
+
 <div class="row">
     <div class="col-lg-8 p-r-0 title-margin-right">
         <div class="page-header">
@@ -25,8 +32,9 @@
         <div class="col-md-3">
             <div class="card alert">
                 <div class="card-header pr">
-                    <h4>Add New Subject</h4>
+                    <h4 (click)="confirm()">Add New Subject</h4>
                 </div>
+
                 <form (submit)="addUpdateSubject(subject)" (keydown.enter)="$event.preventDefault()">
                     <div class="basic-form m-t-20">
                         <div class="form-group">

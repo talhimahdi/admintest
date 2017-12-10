@@ -10,23 +10,24 @@ import { StudentService } from '../student.service';
   styleUrls: ['./student-details.component.css']
 })
 export class StudentDetailsComponent implements OnInit {
-  studentID;
-  student: Student;
+  studentID: string;
+  student: Observable<Student>;
+  showImage: Boolean = false;
 
   constructor(private studentService: StudentService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.studentID = params.id;
+      this.student = this.studentService.getStudentByID(this.studentID);
     });
-    if (this.studentID !== '') {
+    /*if (this.studentID !== '') {
       // call getStudentByID
-      this.studentService.getStudentByID(this.studentID);
-      /*this.studentService.getStudentByID(this.studentID).subscribe(Doc => {
-        // this.student = Doc[1];
-        console.log(Doc);
-      });*/
-    }
+      this.studentService.getStudentByID(this.studentID).subscribe((std: Student) => {
+        this.student = std;
+        console.log(std);
+      });
+    }*/
   }
 
 }

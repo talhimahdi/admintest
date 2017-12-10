@@ -7,5 +7,6 @@ export interface Student extends User {
     address: string;
     gender: string;
     classeId: string;
+    classeDisplayName?: string;
     uid?: string;
 }

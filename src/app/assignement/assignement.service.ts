@@ -9,7 +9,9 @@ export class AssignementService {
   assignementDocument: AngularFirestoreDocument<Assignement>;
 
   constructor(private afs: AngularFirestore) {
-    this.assignementsCollection = afs.collection<Assignement>('assignements');
+    this.assignementsCollection = afs.collection<Assignement>('assignements', ref => {
+      return ref.orderBy('teacher.displayName', 'asc');
+    });
     /*this.assignementsCollection.valueChanges().subscribe(res => {
       console.log(res);
     });*/
@@ -48,14 +50,6 @@ export class AssignementService {
     return queryObservable.map((Items: Assignement[]) => {
         return Items;
       });
-
-    /*return this.assignementsCollection.snapshotChanges().map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as Assignement;
-        data.id = a.payload.doc.id;
-        return data;
-      });
-    });*/
   }
 
 }
