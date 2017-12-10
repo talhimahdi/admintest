@@ -7,8 +7,6 @@ import { User } from '../user/user';
 import * as firebase from 'firebase';
 import { Classe } from '../classe/classe';
 
-import { _ } from 'underscore';
-
 @Injectable()
 export class StudentService {
   studentsCollection: AngularFirestoreCollection<Student>;

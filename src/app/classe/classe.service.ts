@@ -3,8 +3,6 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Classe } from './classe';
 
-import { _ } from 'underscore';
-
 @Injectable()
 export class ClasseService {
   classesCollection: AngularFirestoreCollection<Classe>;
