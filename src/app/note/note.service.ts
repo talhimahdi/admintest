@@ -29,4 +29,8 @@ export class NoteService {
     });
   }
 
+  addNote(note) {
+    this.notesCollection.add(note);
+  }
+
 }

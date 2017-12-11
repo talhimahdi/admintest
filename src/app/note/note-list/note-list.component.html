@@ -159,7 +159,8 @@
                                     </td>
                                     
                                     <td>
-                                        <span><a [routerLink]="" (click)="studentsListByClasse(assignement.classe.id, assignement.subject.id)"><i class="ti-eye color-default"></i></a></span>
+                                        <!-- <span><a [routerLink]="" (click)="studentsListByClasse(assignement.classe.id, assignement.subject.id)"><i class="ti-eye color-default"></i></a></span> -->
+                                        <button type="text" (click)="studentsListByClasse(assignement.classe.id, assignement.subject.id)" pButton label="Students List"></button>
                                     </td>
                                 </tr>
                             </tbody>

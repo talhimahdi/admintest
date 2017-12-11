@@ -19,6 +19,8 @@ import { ExamService } from '../../exam/exam.service';
 import { AssignementService } from '../../assignement/assignement.service';
 import {DialogModule} from 'primeng/primeng';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-note-list',
   templateUrl: './note-list.component.html',
@@ -28,10 +30,8 @@ export class NoteListComponent implements OnInit {
   notes: Observable<Note[]>;
 
   note: Note = {
-    abbreviation: '',
     _note: 0,
     createdAt: '',
-    updateAt: '',
     classeId: '',
     studentId: '',
     examId: '',
@@ -170,8 +170,10 @@ export class NoteListComponent implements OnInit {
     this.note.teacherId = this.selectedTeacher.id;
     this.note.classeId = note.classeId;
     this.note._note = note._note;
+    this.note.createdAt = moment().format('YYYY-MM-DD');
 
     console.log(this.note);
+    this.noteService.addNote(note);
 
   }
 
