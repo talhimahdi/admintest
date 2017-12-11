@@ -8,13 +8,16 @@ import { Subject } from '../../subject/subject';
 import { Teacher } from '../../teacher/teacher';
 import { Student } from '../../student/student';
 import { Assignement } from '../../assignement/assignement';
+import { Exam } from '../../exam/exam';
 
 import { ClasseService } from '../../classe/classe.service';
 import { SubjectService } from '../../subject/subject.service';
 import { TeacherService } from '../../teacher/teacher.service';
 import { StudentService } from '../../student/student.service';
+import { ExamService } from '../../exam/exam.service';
 
 import { AssignementService } from '../../assignement/assignement.service';
+import {DialogModule} from 'primeng/primeng';
 
 @Component({
   selector: 'app-note-list',
@@ -26,15 +29,14 @@ export class NoteListComponent implements OnInit {
 
   note: Note = {
     abbreviation: '',
-    coef: 0,
+    _note: 0,
     createdAt: '',
     updateAt: '',
     classeId: '',
     studentId: '',
-    subjectId: '',
+    examId: '',
     teacherId: ''
   };
-
 
   assignements: Observable<Assignement[]>;
 
@@ -42,9 +44,30 @@ export class NoteListComponent implements OnInit {
   subjects: Observable<Subject[]>;
   teachers: Observable<Teacher[]>;
   students: Observable<Student[]>;
+  exams: Observable<Exam[]>;
 
   teacher: any = {
     displayName: '',
+  };
+
+  selectedTeacher: any = {
+    teacherId: '',
+    displayName: ''
+  };
+
+  selectedSubject: any = {
+    subjectId: '',
+    subjectName: ''
+  };
+
+  selectedStudent: any = {
+    studentId: '',
+    displayName: ''
+  };
+
+  selectedClasse: any = {
+    classeId: '',
+    displayName: ''
   };
 
   addSaveNtn = 'Add';
@@ -58,19 +81,24 @@ export class NoteListComponent implements OnInit {
   subjectID: string;
   classeID: string;
 
+  display: Boolean = false;
+
   constructor(
     private noteService: NoteService,
     private classeService: ClasseService,
     private subjectService: SubjectService,
     private teacherService: TeacherService,
     private assignementService: AssignementService,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private examService: ExamService
   ) { }
 
   ngOnInit() {
     this.notes = this.noteService.getNotes();
 
     this.teachers = this.teacherService.getTeachers();
+    this.subjects = this.subjectService.getsubjects();
+
     this.teachers.subscribe(result => {
       if ( result.length > 0 ) {
         this.loadingTeachers = false;
@@ -110,12 +138,45 @@ export class NoteListComponent implements OnInit {
     }
   }
 
-  addNote(student) {
-    console.log('studentID: ' + student.id);
-    console.log('teacherID: ' + this.teacherID);
-    console.log('classeID: ' + this.classeID);
-    console.log('subjectID: ' + this.subjectID);
+  newNote(student) {
+    this.display = true;
+    this.teacherService.getTeacherByID(this.teacherID)
+      .subscribe((val: Student) => {
+        this.selectedTeacher = val;
+      });
 
+    this.subjectService.getSubjectByID(this.subjectID)
+      .subscribe((val: Subject) => {
+        this.selectedSubject = val;
+      });
+
+    this.studentService.getStudentByID(student.id)
+      .subscribe((val: Student) => {
+        this.selectedStudent = val;
+      });
+
+    this.selectedClasse = this.classeService.getClasseByID(this.classeID)
+      .subscribe((val: Classe) => {
+        this.selectedClasse = val;
+      });
+
+      this.exams = this.examService.getexams();
+  }
+
+  addNote(note) {
+    this.note.studentId = this.selectedStudent.id;
+    this.note.classeId = this.selectedClasse.id;
+    this.note.studentId = this.selectedSubject.id;
+    this.note.teacherId = this.selectedTeacher.id;
+    this.note.classeId = note.classeId;
+    this.note._note = note._note;
+
+    console.log(this.note);
+
+  }
+
+  cancelNote() {
+    this.display = false;
   }
 
 }

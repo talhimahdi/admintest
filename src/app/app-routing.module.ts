@@ -12,6 +12,10 @@ import { TeacherDetailsComponent } from './teacher/teacher-details/teacher-detai
 import { ClasseSlotsListComponent } from './classe-slots/classe-slots-list/classe-slots-list.component';
 import { AssignementListComponent } from './assignement/assignement-list/assignement-list.component';
 import { NoteListComponent } from './note/note-list/note-list.component';
+import { ExamListComponent } from './exam/exam-list/exam-list.component';
+
+import { NotFoundComponent } from './not-found/not-found.component';
+
 
 const routes: Routes = [
   {
@@ -62,7 +66,12 @@ const routes: Routes = [
   {
     path: 'notes',
     component: NoteListComponent
-  }
+  },
+  {
+    path: 'exams',
+    component: ExamListComponent
+  },
+  {path: '**', component: NotFoundComponent}
 
 ];
 

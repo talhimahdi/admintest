@@ -1,12 +1,12 @@
 
 export interface Note {
     id?: string;
-    abbreviation: string;
-    coef: number;
-    createdAt: string;
-    updateAt: string;
+    abbreviation?: string;
+    _note: number;
+    createdAt?: string;
+    updateAt?: string;
     classeId: string;
     studentId: string;
-    subjectId: string;
+    examId: string;
     teacherId: string;
 }

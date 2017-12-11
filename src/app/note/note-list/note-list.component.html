@@ -1,3 +1,60 @@
+<p-dialog [(visible)]="display" [width]="500">
+    <p-header>
+        Header content here
+    </p-header>
+    <form (submit)="addNote(note)" (keydown.enter)="$event.preventDefault()" (keydown.enter)="$event.preventDefault()" autocomplete="off">
+        <div class="col-md-12">
+            <div class="card alert">
+                <div class="row">
+                    <div class="basic-form m-t-20 col-md-6">
+                        <div class="form-group">
+                            <label>Teacher: </label>
+                            {{selectedTeacher.displayName}}
+                        </div>
+                    </div>
+                    <div class="basic-form m-t-20 col-md-6">
+                        <div class="form-group">
+                            <label>Subject: </label>
+                            {{selectedSubject.subjectName}}
+                        </div>
+                    </div>
+                    <div class="basic-form m-t-20 col-md-6">
+                        <div class="form-group">
+                            <label>Student: </label>
+                            {{selectedStudent.displayName}}
+                        </div>
+                    </div>
+                    <div class="basic-form m-t-20 col-md-6">
+                        <div class="form-group">
+                            <label>Classe </label>
+                            {{selectedClasse.displayName}}
+                        </div>
+                    </div>
+                    <div class="basic-form m-t-20 col-md-6">
+                        <div class="form-group">
+                            <label>Exam Type </label>
+                            <select [(ngModel)]="note.examId" name="examId" class="form-control bg-ash border-none" required>
+                                <option></option>
+                                <option *ngFor="let exam of exams | async" [value]="exam.id">{{exam.examTitle}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="basic-form m-t-20 col-md-6">
+                        <div class="form-group">
+                            <label>Note</label>
+                            <input [(ngModel)]="note._note" name="_note" type="text" class="form-control border-none input-flat bg-ash" placeholder="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <button type="text" type="submit" pButton icon="ti-save" label="Add Note"></button>
+            <button type="text" (click)="cancelNote()" pButton icon="fa-external-link-square" label="Cancel"></button>
+        </p-footer>
+    </form>
+</p-dialog>
+
 <div class="row">
     <div class="col-lg-8 p-r-0 title-margin-right">
         <div class="page-header">
@@ -25,9 +82,6 @@
     <div class="row">
         <div class="col-md-3">
             <div class="card alert">
-                <!-- <div class="card-header pr">
-                    <h4>Add New Note</h4>
-                </div> -->
                 <form (keydown.enter)="$event.preventDefault()" autocomplete="off">
                     <div class="row">
                         <div class="basic-form m-t-20">
@@ -150,7 +204,7 @@
                                     </td>
                                     
                                     <td>
-                                        <span><a [routerLink]="" (click)="addNote(student)" >Add Note</a></span>
+                                        <button type="text" (click)="newNote(student)" pButton icon="fa-external-link-square" label="Add Note"></button>
                                     </td>
                                 </tr>
                             </tbody>

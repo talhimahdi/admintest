@@ -25,6 +25,14 @@ export class SubjectService {
     });
   }
 
+  getSubjectByID(subjectID): Observable<Subject> {
+    this.subjectDocument = this.afs.doc<Subject>('subjects/' + subjectID );
+    return this.subjectDocument.valueChanges().map((sbjct: Subject) => {
+      sbjct.id = subjectID;
+      return sbjct;
+    });
+  }
+
   addsubject(subject) {
     this.subjectsCollection.add(subject);
   }

@@ -42,21 +42,17 @@ export class TeacherService {
   }
 
   getTeacherByID(teacherID) {
-        return this.teachersCollection.snapshotChanges().map(changes => {
-          return changes.map(a => {
-            if (a.payload.doc.id === teacherID) {
-              const data = a.payload.doc.data() as Teacher;
-              data.id = a.payload.doc.id;
-              this.afs.doc(`users/${data.uid}`).valueChanges().subscribe((ab: User) => {
-                data.email = ab.email;
-                data.photoURL = ab.photoURL;
-                data.displayName = ab.displayName;
-              });
-              return data;
-            }
-          });
-        });
-      }
+    this.teacherDocument = this.afs.doc<Teacher>('teachers/' + teacherID);
+    return this.teacherDocument.valueChanges().map((tchr: Teacher) => {
+      this.afs.doc<User>('users/' + tchr.uid).valueChanges().subscribe((usr: User) => {
+        tchr.email = usr.email;
+        tchr.displayName = usr.displayName;
+        tchr.photoURL = usr.photoURL;
+        tchr.id = teacherID;
+      });
+      return tchr;
+    });
+  }
 
   addTeacher(teacher) {
     // Add User First

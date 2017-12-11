@@ -13,7 +13,12 @@ export const firebaseConfig = environment.firebaseConfig;
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { ConfirmDialogModule, ConfirmationService, SharedModule } from 'primeng/primeng';
+import {
+  ConfirmDialogModule,
+  ConfirmationService,
+  SharedModule,
+  DialogModule
+} from 'primeng/primeng';
 
 
 // Components Import
@@ -29,8 +34,10 @@ import { TeacherDetailsComponent } from './teacher/teacher-details/teacher-detai
 
 import { AssignementListComponent } from './assignement/assignement-list/assignement-list.component';
 import { NoteListComponent } from './note/note-list/note-list.component';
+import { ExamListComponent } from './exam/exam-list/exam-list.component';
 
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 // # Components Import
 
 // Services Import
@@ -42,6 +49,7 @@ import { TeacherService } from './teacher/teacher.service';
 import { ClasseSlotService } from './classe-slots/classe-slot.service';
 import { AssignementService } from './assignement/assignement.service';
 import { NoteService } from './note/note.service';
+import { ExamService } from './exam/exam.service';
 
 // # Services Import
 
@@ -58,7 +66,10 @@ import { NoteService } from './note/note.service';
     TeacherDetailsComponent,
     HomeComponent,
     AssignementListComponent,
-    NoteListComponent
+    NoteListComponent,
+    NotFoundComponent,
+    ExamListComponent,
+    ExamListComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +81,8 @@ import { NoteService } from './note/note.service';
     DateTimePickerModule,
     BrowserAnimationsModule,
     ConfirmDialogModule,
-    SharedModule
+    SharedModule,
+    DialogModule
   ],
   providers: [
     ClasseService,
@@ -81,6 +93,7 @@ import { NoteService } from './note/note.service';
     TeacherService,
     AssignementService,
     NoteService,
+    ExamService,
     ConfirmationService
   ],
   bootstrap: [AppComponent]

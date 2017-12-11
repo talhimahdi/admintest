@@ -11,20 +11,17 @@ import { TeacherService } from '../teacher.service';
 })
 export class TeacherDetailsComponent implements OnInit {
   teacherID;
-  teacher: Teacher;
+  teacher: Observable<Teacher>;
 
   constructor(private teacherService: TeacherService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.teacherID = params.id;
+      if (this.teacherID !== '') {
+        this.teacher = this.teacherService.getTeacherByID(this.teacherID);
+      }
     });
-    if (this.teacherID !== '') {
-      // call getTeacherByID
-      this.teacherService.getTeacherByID(this.teacherID).subscribe(Doc => {
-        this.teacher = Doc[0];
-      });
-    }
   }
 
 }

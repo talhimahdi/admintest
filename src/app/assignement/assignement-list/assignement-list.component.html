@@ -39,8 +39,8 @@
                           <div class="basic-form m-t-20 col-md-3">
                               <div class="form-group">
                                   <label>Teacher</label>
-                                  <select [(ngModel)]="assignement.teacher.displayName"  name="teacher" class="form-control bg-ash border-none" required>
-                                    <option *ngFor="let teacher of teachers | async" [ngValue]="teacher" [value]="teacher.displayName">{{teacher.displayName}}</option>
+                                  <select [(ngModel)]="assignement.teacher" name="teacher" class="form-control bg-ash border-none" required>  
+                                    <option *ngFor="let teacher of teachers | async" [ngValue]="teacher">{{teacher.displayName}}</option>
                                   </select>
                               </div>
                           </div>
@@ -48,16 +48,16 @@
                           <div class="basic-form m-t-20 col-md-3">
                               <div class="form-group">
                                   <label>Classe</label>
-                                  <select [(ngModel)]="assignement.classe.displayName" name="classe" class="form-control bg-ash border-none" required>  
-                                    <option *ngFor="let classe of classes | async" [ngValue]="classe" [value]="classe.displayName">{{classe.displayName}}</option>
+                                  <select [(ngModel)]="assignement.classe" name="classe" class="form-control bg-ash border-none" required>  
+                                    <option *ngFor="let classe of classes | async" [ngValue]="classe" >{{classe.displayName}}</option>
                                   </select>
                               </div>
                           </div>
                           <div class="basic-form m-t-20 col-md-3">
                               <div class="form-group">
                                   <label>Subject</label>
-                                  <select [(ngModel)]="assignement.subject.subjectName" name="subject" class="form-control bg-ash border-none" required>
-                                    <option *ngFor="let subject of subjects | async" [ngValue]="subject" [value]="subject.subjectName">{{subject.subjectName}}</option>
+                                  <select [(ngModel)]="assignement.subject" name="subject" class="form-control bg-ash border-none" required>
+                                    <option *ngFor="let subject of subjects | async" [ngValue]="subject" >{{subject.subjectName}}</option>
                                   </select>
                               </div>
                           </div>

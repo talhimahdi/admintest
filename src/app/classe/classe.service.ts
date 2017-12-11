@@ -25,6 +25,14 @@ export class ClasseService {
     });
   }
 
+  getClasseByID(classeID): Observable<Classe> {
+    this.classeDocument = this.afs.doc<Classe>('classes/' + classeID );
+    return this.classeDocument.valueChanges().map((clss: Classe) => {
+      clss.id = classeID;
+      return clss;
+    });
+  }
+
   addclasse(classe) {
     this.classesCollection.add(classe);
   }

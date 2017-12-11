@@ -44,46 +44,20 @@ export class StudentService {
   }
 
   getStudentByID(studentID): Observable<Student> {
-
     this.studentDocument = this.afs.doc<Student>('students/' + studentID );
     return this.studentDocument.valueChanges().map((std: Student) => {
       this.afs.doc<User>('users/' + std.uid ).valueChanges().subscribe((usr: User) => {
         std.email = usr.email;
         std.displayName = usr.displayName;
         std.photoURL = usr.photoURL;
+        std.id = studentID;
       });
-      this.afs.doc(`classes/${std.classeId}`).valueChanges().subscribe((classe: Classe) => {
-        std.classeDisplayName = classe.displayName;
+
+      this.afs.doc<Classe>('classes/' + std.classeId ).valueChanges().subscribe((clss: Classe) => {
+        std.classeDisplayName = clss.displayName;
       });
       return std;
     });
-    // console.log(this.studentDocument);
-
-    // return this.student;
-
-    /*let selectedStudent;
-
-    this.studentsCollection.valueChanges().subscribe(res => {
-      selectedStudent = _.where(res, {id: studentID});
-
-      console.log(res);
-    });*/
-
-    /*return this.studentsCollection.snapshotChanges().map(changes => {
-      return changes.map(a => {
-        if (a.payload.doc.id === studentID) {
-          const data = a.payload.doc.data() as Student;
-          data.id = a.payload.doc.id;
-          this.afs.doc(`users/${data.uid}`).valueChanges().subscribe((ab: User) => {
-            data.email = ab.email;
-            data.photoURL = ab.photoURL;
-            data.displayName = ab.displayName;
-          });
-          return data;
-        }
-
-      });
-    });*/
   }
 
   addStudent(student) {

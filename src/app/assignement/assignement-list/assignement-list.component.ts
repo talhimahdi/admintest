@@ -76,6 +76,7 @@ export class AssignementListComponent implements OnInit {
       if (assignement.id !== undefined) {
         this.assignementService.updateAssignement(assignement);
       } else {
+        // console.log(assignement);
         this.assignementService.addAssignement(assignement);
       }
       this.assignementReset();
@@ -122,7 +123,8 @@ export class AssignementListComponent implements OnInit {
         displayName: '',
         email: ''
       }
-  };
-}
+    };
+    this.addSaveNtn = 'Add';
+  }
 
 }
