@@ -1,186 +1,236 @@
+<div *ngIf="loggedIn">
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures" style="height : 100vh;">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <li class="label">Main</li>
 
-<div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
-    <div class="nano">
-        <div class="nano-content">
+                    <li><a routerLink="/dashboard" [routerLinkActive]="['active']"><i class="ti-home"></i> Dashboard </a></li>
+                    <li>
+                        <a class="sidebar-sub-toggle">
+                            <i class="ti-calendar"></i> Classes 
+                            <!-- <span class="badge badge-primary">6</span> -->
+                            <span class="sidebar-collapse-icon ti-angle-down"></span>
+                        </a>
+                        <ul style="display: none;">
+                            <li><a routerLink="/classes"  [routerLinkActive]="['active']"> Manage Classes </a></li>
+                            <li><a routerLink="/classes_slots"  [routerLinkActive]="['active']"> Class Slots </a></li>
+                        </ul>
+                    </li>
+                    <!-- <li><a routerLink="/classes"  [routerLinkActive]="['active']"><i class="ti-calendar"></i> Classes </a></li> -->
+                    <li><a routerLink="/notes" [routerLinkActive]="['active']"><i class="ti-pencil-alt"></i> Notes </a></li>
+                    <li><a routerLink="/subjects" [routerLinkActive]="['active']"><i class="ti-bookmark"></i> Subjects </a></li>
+                    <li><a routerLink="/exams" [routerLinkActive]="['active']"><i class="ti-notepad"></i> Exams </a></li>
+                    <li><a routerLink="/teachers" [routerLinkActive]="['active']"><i class="ti-user"></i> Teachers </a></li>
+                    <li><a routerLink="/students" [routerLinkActive]="['active']"><i class="ti-user"></i> Students </a></li>
+                    <li><a routerLink="/users"    [routerLinkActive]="['active']"><i class="ti-user"></i> Users </a></li>
+                    <li><a routerLink="/assignements" [routerLinkActive]="['active']"><i class="ti-tag"></i> Assignements </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+
+    <div class="header">
+        <div class="pull-left">
+            <div class="logo"><a href="index.html"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Adminity</span></a></div>
+            <div class="hamburger sidebar-toggle">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+        </div>
+        <div class="pull-right p-r-15">
             <ul>
-                <li class="label">Main</li>
-
-                <li><a routerLink="/dashboard" [routerLinkActive]="['active']"><i class="ti-calendar"></i> Dashboard </a></li>
-                <li>
-                    <a class="sidebar-sub-toggle">
-                        <i class="ti-calendar"></i> Classes 
-                        <!-- <span class="badge badge-primary">6</span> -->
-                        <span class="sidebar-collapse-icon ti-angle-down"></span>
-                    </a>
-                    <ul style="display: none;">
-                        <li><a routerLink="/classes"  [routerLinkActive]="['active']"> Manage Classes </a></li>
-                        <li><a routerLink="/classes_slots"  [routerLinkActive]="['active']"> Class Slots </a></li>
-                    </ul>
+                <li class="header-icon dib"><i class="ti-bell"></i>
+                    <div class="drop-down">
+                        <div class="dropdown-content-heading">
+                            <span class="text-left">Recent Notifications</span>
+                        </div>
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Mr. Saifun</div>
+                                            <div class="notification-text">5 members joined today </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Mariam</div>
+                                            <div class="notification-text">likes a photo of you</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Tasnim</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Ishrat Jahan</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="text-center">
+                                    <a href="#" class="more-link">See All</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </li>
-                <!-- <li><a routerLink="/classes"  [routerLinkActive]="['active']"><i class="ti-calendar"></i> Classes </a></li> -->
-                <li><a routerLink="/notes" [routerLinkActive]="['active']"><i class="ti-email"></i> Notes </a></li>
-                <li><a routerLink="/subjects" [routerLinkActive]="['active']"><i class="ti-email"></i> Subjects </a></li>
-                <li><a routerLink="/exams" [routerLinkActive]="['active']"><i class="ti-email"></i> Exams </a></li>
-                <li><a routerLink="/teachers" [routerLinkActive]="['active']"><i class="ti-user"></i> Teachers </a></li>
-                <li><a routerLink="/students" [routerLinkActive]="['active']"><i class="ti-user"></i> Students </a></li>
-                <li><a routerLink="/users"    [routerLinkActive]="['active']"><i class="ti-user"></i> Users </a></li>
-                <li><a routerLink="/assignements" [routerLinkActive]="['active']"><i class="ti-calendar"></i> Assignements </a></li>
+                <li class="header-icon dib"><i class="ti-email"></i>
+                    <div class="drop-down">
+                        <div class="dropdown-content-heading">
+                            <span class="text-left">2 New Messages</span>
+                            <a href="email.html"><i class="ti-pencil-alt pull-right"></i></a>
+                        </div>
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li class="notification-unread">
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Saiul Islam</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-unread">
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Ishrat Jahan</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Saiul Islam</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Ishrat Jahan</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="text-center">
+                                    <a href="#" class="more-link">See All</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="header-icon dib"><img class="avatar-img" src="#" alt="" /> <span class="user-avatar">Saifun <i class="ti-angle-down f-s-10"></i></span>
+                    <div class="drop-down dropdown-profile">
+                        <div class="dropdown-content-heading">
+                            <span class="text-left">Upgrade Now</span>
+                            <p class="trial-day">30 Days Trail</p>
+                        </div>
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li><a href="#"><i class="ti-user"></i> <span>Profile</span></a></li>
+                                <li><a href="#"><i class="ti-wallet"></i> <span>My Balance</span></a></li>
+                                <li><a href="#"><i class="ti-write"></i> <span>My Task</span></a></li>
+                                <li><a href="#"><i class="ti-calendar"></i> <span>My Calender</span></a></li>
+                                <li><a href="#"><i class="ti-email"></i> <span>Inbox</span></a></li>
+                                <li><a href="#"><i class="ti-settings"></i> <span>Setting</span></a></li>
+                                <li><a href="#"><i class="ti-help-alt"></i> <span>Help</span></a></li>
+                                <li><a href="#"><i class="ti-lock"></i> <span>Lock Screen</span></a></li>
+                                <li><a href="#"><i class="ti-power-off"></i> <span>Logout</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
-</div>
-<!-- /# sidebar -->
 
-<div class="header">
-    <div class="pull-left">
-        <div class="logo"><a href="index.html"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Adminity</span></a></div>
-        <div class="hamburger sidebar-toggle">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </div>
-    </div>
-    <div class="pull-right p-r-15">
-        <ul>
-            <li class="header-icon dib"><i class="ti-bell"></i>
-                <div class="drop-down">
-                    <div class="dropdown-content-heading">
-                        <span class="text-left">Recent Notifications</span>
-                    </div>
-                    <div class="dropdown-content-body">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
-                                    <div class="notification-content">
-                                        <small class="notification-timestamp pull-right">02:34 PM</small>
-                                        <div class="notification-heading">Mr. Saifun</div>
-                                        <div class="notification-text">5 members joined today </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
-                                    <div class="notification-content">
-                                        <small class="notification-timestamp pull-right">02:34 PM</small>
-                                        <div class="notification-heading">Mariam</div>
-                                        <div class="notification-text">likes a photo of you</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
-                                    <div class="notification-content">
-                                        <small class="notification-timestamp pull-right">02:34 PM</small>
-                                        <div class="notification-heading">Tasnim</div>
-                                        <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
-                                    <div class="notification-content">
-                                        <small class="notification-timestamp pull-right">02:34 PM</small>
-                                        <div class="notification-heading">Ishrat Jahan</div>
-                                        <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="text-center">
-                                <a href="#" class="more-link">See All</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            <li class="header-icon dib"><i class="ti-email"></i>
-                <div class="drop-down">
-                    <div class="dropdown-content-heading">
-                        <span class="text-left">2 New Messages</span>
-                        <a href="email.html"><i class="ti-pencil-alt pull-right"></i></a>
-                    </div>
-                    <div class="dropdown-content-body">
-                        <ul>
-                            <li class="notification-unread">
-                                <a href="#">
-                                    <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
-                                    <div class="notification-content">
-                                        <small class="notification-timestamp pull-right">02:34 PM</small>
-                                        <div class="notification-heading">Saiul Islam</div>
-                                        <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="notification-unread">
-                                <a href="#">
-                                    <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
-                                    <div class="notification-content">
-                                        <small class="notification-timestamp pull-right">02:34 PM</small>
-                                        <div class="notification-heading">Ishrat Jahan</div>
-                                        <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
-                                    <div class="notification-content">
-                                        <small class="notification-timestamp pull-right">02:34 PM</small>
-                                        <div class="notification-heading">Saiul Islam</div>
-                                        <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="pull-left m-r-10 avatar-img" src="#" alt="" />
-                                    <div class="notification-content">
-                                        <small class="notification-timestamp pull-right">02:34 PM</small>
-                                        <div class="notification-heading">Ishrat Jahan</div>
-                                        <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="text-center">
-                                <a href="#" class="more-link">See All</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            <li class="header-icon dib"><img class="avatar-img" src="#" alt="" /> <span class="user-avatar">Saifun <i class="ti-angle-down f-s-10"></i></span>
-                <div class="drop-down dropdown-profile">
-                    <div class="dropdown-content-heading">
-                        <span class="text-left">Upgrade Now</span>
-                        <p class="trial-day">30 Days Trail</p>
-                    </div>
-                    <div class="dropdown-content-body">
-                        <ul>
-                            <li><a href="#"><i class="ti-user"></i> <span>Profile</span></a></li>
-                            <li><a href="#"><i class="ti-wallet"></i> <span>My Balance</span></a></li>
-                            <li><a href="#"><i class="ti-write"></i> <span>My Task</span></a></li>
-                            <li><a href="#"><i class="ti-calendar"></i> <span>My Calender</span></a></li>
-                            <li><a href="#"><i class="ti-email"></i> <span>Inbox</span></a></li>
-                            <li><a href="#"><i class="ti-settings"></i> <span>Setting</span></a></li>
-                            <li><a href="#"><i class="ti-help-alt"></i> <span>Help</span></a></li>
-                            <li><a href="#"><i class="ti-lock"></i> <span>Lock Screen</span></a></li>
-                            <li><a href="#"><i class="ti-power-off"></i> <span>Logout</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div class="content-wrap">
-    <div class="main">
-        <div class="container-fluid">
-            <router-outlet></router-outlet>
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>
 
+
+<div *ngIf="!loggedIn">
+    <div class="unix-login">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+              <div class="login-content">
+                <div class="login-form">
+                  <h4>Administrator Login</h4>
+                  <form (submit)="loginProcess(login, pass)" (keydown.enter)="$event.preventDefault()">
+                    <div class="form-group">
+                      <label>Login</label>
+                      <input [(ngModel)]="login" name="login" type="text" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                      <label>Password</label>
+                      <input [(ngModel)]="pass" name="pass" type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> Remember Me
+                      </label>
+                      <label class="pull-right">
+                        <a href="#">Forgotten Password?</a>
+                      </label>
+      
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
+                    <div *ngIf="loginInValid" class="card bg-danger">
+                        <div class="media">
+                            <div class="media-body media-text-right">
+                                <h4 style="color: #FFF; margin: 0;">Login Invalid!</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="register-link m-t-15 text-center">
+                      <p>Don't have account ?
+                        <a href="#"> Sign Up Here</a>
+                      </p>
+                    </div> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</div>

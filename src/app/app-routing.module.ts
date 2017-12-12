@@ -15,12 +15,13 @@ import { NoteListComponent } from './note/note-list/note-list.component';
 import { ExamListComponent } from './exam/exam-list/exam-list.component';
 
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
     path: 'exams',
     component: ExamListComponent
   },
+  /*{
+    path: 'login',
+    component: LoginComponent
+  },*/
   {path: '**', component: NotFoundComponent}
 
 ];

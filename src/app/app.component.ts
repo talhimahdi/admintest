@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, transition } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare var jquery: any;
 declare var $: any;
@@ -11,8 +11,13 @@ declare var $: any;
 })
 export class AppComponent {
   title = 'app';
+  loggedIn: Boolean = false;
 
-  constructor() { }
+  login;
+  pass;
+  loginInValid: Boolean = false;
+
+  constructor(private router: Router) { }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
@@ -37,6 +42,25 @@ export class AppComponent {
     $.getScript('assets/theme-assets/js/lib/calendar-2/pignose.calendar.min.js', function () { });
     $.getScript('assets/theme-assets/js/lib/calendar-2/pignose.init.js', function () { });
     $.getScript('assets/theme-assets/js/scripts.js', function () { });
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnInit() {
+    console.log('OnInit');
+    if (!this.loggedIn) {
+      // this.router.navigate(['login']);
+    }
+  }
+
+  loginProcess(login, pass) {
+    if (login !== '' && pass !== '') {
+      if (login === 'admin' && pass === 'admin') {
+        this.loggedIn = true;
+        this.router.navigate(['dashboard']);
+      } else {
+        this.loginInValid = true;
+      }
+    }
   }
 
 }

@@ -96,6 +96,10 @@ export class NoteListComponent implements OnInit {
   ngOnInit() {
     this.notes = this.noteService.getNotes();
 
+    this.notes.subscribe(result => {
+      console.log(result);
+    });
+
     this.teachers = this.teacherService.getTeachers();
     this.subjects = this.subjectService.getsubjects();
 
@@ -174,6 +178,7 @@ export class NoteListComponent implements OnInit {
 
     console.log(this.note);
     this.noteService.addNote(note);
+    this.display = false;
 
   }
 

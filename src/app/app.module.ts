@@ -50,6 +50,7 @@ import { ClasseSlotService } from './classe-slots/classe-slot.service';
 import { AssignementService } from './assignement/assignement.service';
 import { NoteService } from './note/note.service';
 import { ExamService } from './exam/exam.service';
+import { LoginComponent } from './login/login.component';
 
 // # Services Import
 
@@ -69,7 +70,8 @@ import { ExamService } from './exam/exam.service';
     NoteListComponent,
     NotFoundComponent,
     ExamListComponent,
-    ExamListComponent
+    ExamListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
